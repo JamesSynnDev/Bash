@@ -1,21 +1,20 @@
 #!/bin/bash
 
-mkdir describes
-mkdir result
+mkdir describes results
 
-function commands() {
-    local val=$(cat ref/test.txt) # describe_commands.txt
+function getCommands() {
+    local val=$(cat describe_commands.txt) # describe_commands.txt
     echo "$val"
 }
 
-function cmmd() {
+function executeChecker() {
     i=1
-    commands | while read line ; do
+    getCommands | while read line ; do
         num=`printf "%.2d" $i`
         id=$( echo "$line" | awk '{ print $4 }' )
         ((i+=1))
-        echo "$($line)" > describe/$num"_descirbe_"$id.txt
+        echo "$($line)" > describes/$num"_descirbe_"$id.txt
         sleep 0.5
     done
 }
-cmmd | grep -w "container ID:" >> result/result.txt
+executeChecker | grep -w "container ID:" >> results/result.txt

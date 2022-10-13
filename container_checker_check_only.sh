@@ -1,15 +1,15 @@
 #!/bin/bash
 
-mkdir result
+mkdir results
 
-function commands() {
+function getCommands() {
     local val=$(cat describe_commands.txt)
     echo "$val"
 }
-function cmmd() {
-    commands | while read line ; do
+function executeChecker() {
+    getCommands | while read line ; do
         echo "$($line)"
         sleep 0.5
     done
 }
-cmmd | grep -w "container ID:" >> result/result.txt
+executeChecker | grep -w "container ID:" >> results/result.txt
