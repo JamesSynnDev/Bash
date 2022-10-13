@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir result
+
 function commands() {
     local val=$(cat describe_commands.txt)
     echo "$val"
@@ -10,4 +12,4 @@ function cmmd() {
         sleep 0.5
     done
 }
-cmmd | grep -w "container ID:" >> result.txt
+cmmd | grep -w "container ID:" >> result/result.txt

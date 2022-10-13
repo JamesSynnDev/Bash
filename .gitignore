@@ -2,4 +2,4 @@
 *_test.sh
 
 *.md
-
+!README.md

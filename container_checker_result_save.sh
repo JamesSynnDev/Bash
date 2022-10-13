@@ -1,10 +1,10 @@
 #!/bin/bash
 
-mkdir describe
-
+mkdir describes
+mkdir result
 
 function commands() {
-    local val=$(cat ref/test.txt) # describe_commands.txt)
+    local val=$(cat ref/test.txt) # describe_commands.txt
     echo "$val"
 }
 
@@ -18,4 +18,4 @@ function cmmd() {
         sleep 0.5
     done
 }
-cmmd | grep -w "container ID:" >> result.txt
+cmmd | grep -w "container ID:" >> result/result.txt
